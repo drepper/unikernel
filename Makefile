@@ -10,13 +10,14 @@ DEBUG = -g
 OPT = -O2
 
 TARGET = kernel
-CXXOBJS32 = kmain32.o
+CXXOBJS32 = kmain32.o lib32.o
 ASOBJS32 = boot32.o
 
 OBJS = $(ASOBJS32) $(CXXOBJS32)
 DEPS = $(ASOBJS32:.o=.d) $(CXXOBJS32:.o=.d)
 
 kmain32.o: CXXFLAGS += -m32
+lib32.o: CXXFLAGS += -m32
 boot32.o: ASFLAGS += -m32
 
 include Rules.mk
@@ -25,7 +26,7 @@ include Rules.mk
 all: $(TARGET)
 
 $(TARGET): $(OBJS) kernel.map
-	$(Q)$(LD) -m elf_i386 -T kernel.map -o $@ $^
+	$(Q)$(LD) -static -m elf_i386 -T kernel.map -o $@ $^
 
 .PHONY: run
 run: all
