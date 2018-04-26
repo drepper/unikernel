@@ -34,7 +34,7 @@ run: all
 
 .PHONY: clean distclean
 clean:
-	-rm -f $(TARGET) $(OBJS)
+	-rm -f $(TARGET) $(OBJS) $(DEPS)
 distclean: clean
 	-rm -f $(DEPS)
 

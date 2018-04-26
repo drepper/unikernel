@@ -5,7 +5,7 @@
 #include "multiboot.h"
 
 
-multiboot::header header __attribute__((section(".startup")));
+multiboot1::header header __attribute__((section(".startup")));
 
 struct cga_char {
   char ch;
@@ -24,9 +24,9 @@ void fail(const char* s);
 
 
 extern "C"
-void kmain(int magic, multiboot::info& info)
+void kmain(int magic, multiboot1::info& info)
 {
-  if (! multiboot::multibooted(magic)) {
+  if (! multiboot1::multibooted(magic)) {
     fail("not multiboot");
     return;
   }
