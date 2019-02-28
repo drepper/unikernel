@@ -52,7 +52,7 @@ namespace multiboot1 {
 
   constexpr uint32_t bootloader_magic = 0x2BADB002;
 
-  bool multibooted(uint32_t magic) {
+  inline bool multibooted(uint32_t magic) {
     return magic == bootloader_magic;
   }
 
@@ -137,7 +137,7 @@ namespace multiboot2 {
 
   constexpr uint32_t bootloader_magic = 0x36d76289;
 
-  bool multibooted(uint32_t magic) { return magic == bootloader_magic; }
+  inline bool multibooted(uint32_t magic) { return magic == bootloader_magic; }
 
 
   // The section header table for ELF.
