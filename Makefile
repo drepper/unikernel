@@ -26,7 +26,7 @@ include Rules.mk
 all: $(TARGET)
 
 $(TARGET): $(OBJS) kernel.map
-	$(Q)$(LD) -static -m elf_i386 -T kernel.map -o $@ $^
+	$(Q)$(LD) -static -m elf_i386 -T kernel.map -o $@ $(filter %.o,$^)
 
 .PHONY: run
 run: all
